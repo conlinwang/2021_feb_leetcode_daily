@@ -33,16 +33,14 @@ class Solution:
             return res
         q = [root]
         while q:
-            right_sight = []
             level_q = q[:]
             q = []
             for node in level_q:
-                right_sight = [node.val]
                 if node.left:
                     q.append(node.left)
                 if node.right:
                     q.append(node.right)
-            res.append(right_sight[0])
+            res.append(node.val)
         return res
 ```
 
