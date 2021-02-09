@@ -77,3 +77,36 @@ class Solution:
 ```
 
 T.C. O(N), S.C. O(N)
+
+```cpp
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+private:
+    int cur = 0;
+public:
+    void dfs(TreeNode* node) {
+        if (!node)
+            return;
+        if (node->right)
+            dfs(node->right);
+        cur += node->val;
+        node->val = cur;
+        if (node->left)
+            dfs(node->left);
+    }
+    TreeNode* convertBST(TreeNode* root) {
+        dfs(root);
+        return root;        
+    }
+};
+```
